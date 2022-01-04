@@ -1,30 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Campgrounds</title>
-  </head>
-  <body>
-    <h1>All campgrounds</h1>
-    <span>
-      <a style="color: blue; text-decoration: none" href="/campgrounds/new"
-        >Add new Campground</a
-      ></span
-    >
-    <ul>
-      <% for(let c of campgrounds) {%>
-      <li>
-        <a
-          href="/campgrounds/<%=c._id%> "
-          style="color: green; text-decoration: none"
-        >
-          <%=c.title %></a
-        >
-      </li>
+<% layout('/layouts/boilerplate') %>
+<div class="max-w-screen-md mx-auto">
+  <h1 class="font-semibold text-3xl my-4 text-gray-800">All campgrounds</h1>
 
-      <% } %>
-    </ul>
-  </body>
-</html>
+  <% for(let c of campgrounds) {%>
+
+  <div class="pt-2 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-2">
+    <!--Card 1-->
+    <div class="rounded overflow-hidden shadow-lg">
+      <img class="w-full" src="<%=c.image %>" alt="in-the-woods-pic" />
+      <div class="px-6 py-2">
+        <div class="font-bold text-xl mb-2"><%=c.title %></div>
+        <div class="font-semibold text-md mb-1">₹ <%=c.price %></div>
+        <p class="text-gray-700 text-base"><%= c.description %></p>
+        <button class="bg-gray-800 px-4 py-1 mt-2 text-white text-semibold">
+          <a href="/campgrounds/<%=c._id%>">See more</a>
+        </button>
+      </div>
+    </div>
+  </div>
+  <% } %>
+</div>
