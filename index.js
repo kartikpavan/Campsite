@@ -67,6 +67,11 @@ app.delete("/campgrounds/:id", async (req, res) => {
   res.redirect("/campgrounds");
 });
 
+//if no routes are specified then redirect to 404 page
+app.use((req, res) => {
+  res.render("404");
+});
+
 app.listen(3000, () => {
   console.log("Listening on Port 3000");
 });
