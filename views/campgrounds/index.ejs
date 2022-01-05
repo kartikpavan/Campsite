@@ -1,22 +1,32 @@
 <% layout('/layouts/boilerplate') %>
-<div class="max-w-screen-md mx-auto">
-  <h1 class="font-semibold text-3xl my-4 text-gray-800">All campgrounds</h1>
+  <div class="max-w-screen-md mx-auto">
+    <h1 class="font-semibold text-3xl my-4 text-gray-800">All campgrounds</h1>
 
-  <% for(let c of campgrounds) {%>
+    <% for(let c of campgrounds) {%>
 
-  <div class="pt-2 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-2">
-    <!--Card 1-->
-    <div class="rounded overflow-hidden shadow-lg">
-      <img class="w-full" src="<%=c.image %>" alt="in-the-woods-pic" />
-      <div class="px-6 py-2">
-        <div class="font-bold text-xl mb-2"><%=c.title %></div>
-        <div class="font-semibold text-md mb-1">₹ <%=c.price %></div>
-        <p class="text-gray-700 text-base"><%= c.description %></p>
-        <button class="bg-gray-800 px-4 py-1 mt-2 text-white text-semibold">
-          <a href="/campgrounds/<%=c._id%>">See more</a>
-        </button>
+      <!--Card 1-->
+      <div class=" w-full lg:max-w-full lg:flex mb-8">
+        <div
+          class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+          style="background-image: url('<%=c.image %>')">
+        </div>
+        <div
+          class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+          <div class="mb-1">
+            <p class="text-sm text-gray-600 flex items-center">
+              ₹ <%=c.price %>
+            </p>
+            <div class="text-gray-900 font-bold text-xl mb-2">
+              <%=c.title %>
+            </div>
+            <p class="text-gray-700 text-base">
+              <%= c.description %>
+            </p>
+            <button class="bg-gray-800 px-4 py-1 mt-2 text-white text-semibold">
+              <a href="/campgrounds/<%=c._id%>">See more</a>
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
+      <% } %>
   </div>
-  <% } %>
-</div>
