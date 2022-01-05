@@ -27,7 +27,7 @@ const seedDb = async () => {
       //here admin_name is the State
       location: `${cities[random406].city},${cities[random406].admin_name}`,
       title: `${sample(descriptors)} ${sample(places)}`,
-      image: "https://source.unsplash.com/random/?forest,mountain/300x300",
+      image: "https://source.unsplash.com/random/?forest,mountain/200x200",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam semper ornare odio, id ullamcorper eros fringilla sit amet. Aliquam vestibulum aliquet consequat. Nulla eros lorem, porta sit amet luctus at, venenatis at magna. ",
       price,
