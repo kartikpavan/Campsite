@@ -1,23 +1,26 @@
 <% layout('/layouts/boilerplate') %>
   <div class="max-w-screen-sm mx-auto">
     <h1 class="font-semibold text-3xl my-4 text-gray-800">Create a new Campground</h1>
-    <form action="/campgrounds" method="POST">
+    <form action="/campgrounds" method="POST" class="validated-form">
       <div class="mt-6 mb-2 ">
         <label for="title" class="text-lg text-gray-700 font-bold mb-2 mr-12 ">Title</label>
         <input type="text" name="campground[title]" id="title"
-          class="w-full bg-white appearance-none border-2 border-gray-200 rounded mt-1 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-800 " />
+          class="w-full bg-white appearance-none border-2 border-gray-200 rounded mt-1 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-800 require required"
+          required />
       </div>
 
       <div class="mb-2">
         <label for="location" class="text-lg text-gray-700 font-bold mb-2 mr-4">Location</label>
         <input type="text" name="campground[location]" id="location"
-          class="bg-white w-full appearance-none border-2 border-gray-200 rounded mt-1 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-800" />
+          class="bg-white w-full appearance-none border-2 border-gray-200 rounded mt-1 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-800"
+          required />
       </div>
 
       <div class="mb-2">
         <label for="image" class="text-lg text-gray-700 font-bold mb-2 mr-4">Image URL</label>
         <input type="text" name="campground[image]" id="image"
-          class="bg-white w-full appearance-none border-2 border-gray-200 rounded mt-1 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-800" />
+          class="bg-white w-full appearance-none border-2 border-gray-200 rounded mt-1 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-800"
+          required />
       </div>
 
       <div class="mb-2">
@@ -25,7 +28,8 @@
         <div class="flex flex-row">
           <span class="flex items-center bg-gray-200 px-3 font-bold text-gray-700">₹</span>
           <input type="number" name="campground[price]" id="price"
-            class="bg-white w-full appearance-none border-2 border-gray-200 rounded mt-1 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-800">
+            class="bg-white w-full appearance-none border-2 border-gray-200 rounded mt-1 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-800"
+            required>
         </div>
 
       </div>
@@ -48,7 +52,7 @@
                 ease-in-out
                 m-0
                 focus:text-gray-700 focus:bg-white focus:border-gray-700 focus:outline-none
-              " id="description" rows="3" name="campground[description]"></textarea>
+              " id="description" rows="3" name="campground[description]" required></textarea>
       </div>
 
       <button class="text-md font-semibold mt-6 py-2 px-12 bg-gray-800 text-white">

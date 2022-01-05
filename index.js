@@ -3,6 +3,7 @@ const path = require("path");
 const app = express();
 const mongoose = require("mongoose");
 const ejsMate = require("ejs-mate");
+// const catchAsync = require('./utils/catchAsync')
 const methodOverride = require("method-override");
 const Campground = require("./models/campgrounds");
 
@@ -37,10 +38,14 @@ app.get("/campgrounds/new", (req, res) => {
   res.render("campgrounds/new");
 });
 
-app.post("/campgrounds", async (req, res) => {
-  const campgrounds = new Campground(req.body.campground);
-  await campgrounds.save();
-  res.redirect(`/campgrounds/${campgrounds._id}`);
+app.post("/campgrounds", async (req, res, next) => {
+  try {
+    const campgrounds = new Campground(req.body.campground);
+    await campgrounds.save();
+    res.redirect(`/campgrounds/${campgrounds._id}`);
+  } catch (err) {
+    next(err);
+  }
 });
 
 app.get("/campgrounds/:id", async (req, res) => {
@@ -70,8 +75,17 @@ app.delete("/campgrounds/:id", async (req, res) => {
 });
 
 //if no routes are specified then redirect to 404 page
-app.use((req, res) => {
+//404 code - > NOT FOUND , 401 -> Not authorized , 402->Payment required , 403->Forbidden
+app.use((err, req, res, next) => {
+  const { status = 500, message = "Something Went wrong" } = err;
+  res.status(status).send(message);
+});
+
+app.use((req, res, next) => {
+  req.requestTime = Date.now();
+  console.log(req.method, req.path);
   res.status(404).render("404");
+  next();
 });
 
 app.listen(3000, () => {

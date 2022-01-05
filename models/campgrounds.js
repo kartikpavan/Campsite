@@ -4,11 +4,26 @@ const moment = require("moment");
 const { type } = require("express/lib/response");
 
 const campGroundsSchema = new Schema({
-  title: String,
-  image: String,
-  price: Number,
-  description: String,
-  location: String,
+  title: {
+    type:String,
+    required:true
+  },
+  image: {
+    type:String,
+    required:true
+  },
+  price: {
+    type:Number,
+    required:true
+  },
+  description: {
+    type:String,
+    required:true
+  },
+  location: {
+    type:String,
+    required:true
+  },
   created_at: String,
 });
 
